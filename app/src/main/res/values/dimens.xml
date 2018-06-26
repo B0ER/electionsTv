@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--main fragment-->
+
+    <!--custom toolbar-->
+    <dimen name="text_toolbar">40sp</dimen>
+
+    <!--fragment stats-->
+    <dimen name="progress_timer">30sp</dimen>
+
+</resources>

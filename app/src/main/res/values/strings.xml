@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Голусування</string>
+    <string name="title_print">Будь ласка підтвердіть Вашу дію</string>
+    <string name="authTitle">ПРИКЛАДІТЬ ПАЛЕЦЬ</string>
+
+    <string name="consonants">"За"</string>
+    <string name="against">"Проти"</string>
+    <string name="resisted">"Утримались"</string>
+    <string name="missing">"Відсутні"</string>
+
+    <string name="titleBarDefault">Ласкаво просимо</string>
+    <string name="titleBarWait">Очікуйте</string>
+
+    <string name="time_left">"Часу залишилось : %1$d сек."</string>
+</resources>
