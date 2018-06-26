@@ -12,4 +12,5 @@
     <string name="titleBarWait">Очікуйте</string>
 
     <string name="time_left">"Часу залишилось : %1$d сек."</string>
+    <string name="time_lefted">Час вийшов.</string>
 </resources>

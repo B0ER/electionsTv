@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +14,7 @@ import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import com.twobro.tvelections.R;
+import com.twobro.tvelections.activity.MainActivity;
 import com.twobro.tvelections.controller.VotingProgressController;
 import com.twobro.tvelections.databinding.FragmentProgressBinding;
 import com.twobro.tvelections.models.ProgressBarClass;
@@ -19,6 +22,7 @@ import com.twobro.tvelections.mvp.ProgressPresenter;
 import com.twobro.tvelections.network.retrofit.RetrofitConnector;
 
 public class StatsFragment extends Fragment {
+    private static String TAG = "StatsFragment";
     public FragmentProgressBinding mBinding;
     private VotingProgressController mVPC;
     private ProgressPresenter mPresenter;
@@ -68,5 +72,14 @@ public class StatsFragment extends Fragment {
 
     public void setTimeSec(int timeSec) {
         mBinding.timeEnd.setText(getString(R.string.time_left, timeSec));
+        if (timeSec == 0){
+            mBinding.timeEnd.setText(getString(R.string.time_lefted));
+        }
+    }
+
+    public void backToWaitFragment() {
+        Fragment fragment = WaitingFragment.createFragment();
+        Log.d(TAG, "backToWaitFragment: ");
+        ((MainActivity)getActivity()).replaceFragment(fragment);
     }
 }

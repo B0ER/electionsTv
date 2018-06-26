@@ -1,19 +1,11 @@
 package com.twobro.tvelections.mvp;
 
 import android.annotation.SuppressLint;
-import android.graphics.Color;
-import android.graphics.Typeface;
 import android.os.Handler;
 import android.os.Message;
-import android.text.Spannable;
-import android.text.SpannableString;
-import android.text.style.ForegroundColorSpan;
-import android.text.style.StyleSpan;
 import android.util.Log;
-import android.widget.TextView;
 
 import com.google.gson.Gson;
-import com.twobro.tvelections.R;
 import com.twobro.tvelections.fragments.StatsFragment;
 import com.twobro.tvelections.models.InfoUsers;
 import com.twobro.tvelections.models.VotingProgress;
@@ -22,7 +14,7 @@ import com.twobro.tvelections.network.retrofit.RetrofitConnector;
 import com.twobro.tvelections.network.socket.SocketSingleton;
 import com.twobro.tvelections.time.TimerCallback;
 
-import java.net.ServerSocket;
+import java.util.concurrent.TimeUnit;
 
 import io.socket.client.Socket;
 import retrofit2.Call;
@@ -48,7 +40,7 @@ public class ProgressPresenter {
             @Override
             public void handleMessage(Message msg) {
                 super.handleMessage(msg);
-                //resultVoting();
+                fragment.backToWaitFragment();
             }
         };
 
@@ -77,7 +69,14 @@ public class ProgressPresenter {
         });
 
         socket.on("eventCloseVoting", (Object... args) -> {
-            hFinishVoting.sendEmptyMessage(0);
+            new Thread(() -> {
+                try {
+                    TimeUnit.SECONDS.sleep(5);
+                    hFinishVoting.sendEmptyMessage(0);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }).start();
         });
         socket.connect();
 
@@ -86,9 +85,7 @@ public class ProgressPresenter {
     public void startTimer(int time) {
         timer = new TimerCallback(time);
         timer.setCallbackTime(times -> {
-            fragment.mBinding.timeEnd.setText(fragment.getString(R.string.time_left, times));
-//            if (times == 0)
-//                resultVoting();
+            fragment.setTimeSec(times);
         });
         timer.startTimer();
     }
@@ -114,12 +111,5 @@ public class ProgressPresenter {
             });
         } else fragment.serverError();
 
-    }
-
-    public Spannable getColoredSpannableText(String word, int color) {
-        Spannable spannable = new SpannableString(word);
-        spannable.setSpan(new ForegroundColorSpan(color), 0, word.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-        spannable.setSpan(new StyleSpan(Typeface.BOLD), 0, word.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-        return spannable;
     }
 }

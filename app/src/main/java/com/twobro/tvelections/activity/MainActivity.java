@@ -11,9 +11,12 @@ import android.widget.TextView;
 
 import com.twobro.tvelections.fragments.StatsFragment;
 import com.twobro.tvelections.R;
+import com.twobro.tvelections.fragments.WaitingFragment;
 
 public class MainActivity extends AppCompatActivity {
     private Toolbar mToolbar;
+    private FragmentManager mFragmentManager;
+
     private static final String TAG = "MainActivity";
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -23,14 +26,18 @@ public class MainActivity extends AppCompatActivity {
         mToolbar = findViewById(R.id.custom_toolbar);
         setSupportActionBar(mToolbar);
 
-        FragmentManager cFragmentManager = getSupportFragmentManager();
-        Fragment mainFragment = cFragmentManager.findFragmentById(R.id.center_fragment);
+        mFragmentManager = getSupportFragmentManager();
+        Fragment mainFragment = mFragmentManager.findFragmentById(R.id.center_fragment);
         if (mainFragment == null) {
             mainFragment = StatsFragment.createFragment();
-            cFragmentManager.beginTransaction()
+            mFragmentManager.beginTransaction()
                     .add(R.id.center_fragment, mainFragment)
                     .commit();
         }
+    }
+
+    public void replaceFragment(Fragment onFragment){
+        mFragmentManager.beginTransaction().replace(R.id.center_fragment, onFragment).commit();
     }
 
     @Override
