@@ -3,7 +3,7 @@ package com.twobro.tvelections.controller;
 import android.content.Context;
 
 import com.twobro.tvelections.R;
-import com.twobro.tvelections.databinding.FragmentProgressBinding;
+import com.twobro.tvelections.databinding.FragmentStatsBinding;
 import com.twobro.tvelections.models.ProgressBarClass;
 import com.twobro.tvelections.models.VotingProgress;
 
@@ -11,10 +11,10 @@ public class VotingProgressController {
 
   private Context context;
   private ProgressBarClass mConsonants, mAgainst, mResisted, mMissing;
-  private FragmentProgressBinding mBinding;
+  private FragmentStatsBinding mBinding;
   private int maxProgress = 100;
 
-  public VotingProgressController(FragmentProgressBinding binding) {
+  public VotingProgressController(FragmentStatsBinding binding) {
     mBinding = binding;
 
     mConsonants = new ProgressBarClass();

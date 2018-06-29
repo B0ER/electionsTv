@@ -1,32 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-  <FrameLayout
+  <android.support.constraint.ConstraintLayout
       android:layout_width="match_parent"
       android:layout_height="match_parent">
 
     <FrameLayout
         android:id="@+id/center_fragment"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"/>
-
-    <FrameLayout
-        android:id="@+id/loadConnect"
-        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:clickable="true"
-        android:focusable="true"
-        android:visibility="invisible">
+        android:layout_width="match_parent"/>
 
-      <View
-          android:layout_width="match_parent"
-          android:layout_height="match_parent"
-          android:background="#734b4b4b"/>
-
-      <ProgressBar
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_gravity="center"/>
-    </FrameLayout>
-  </FrameLayout>
+  </android.support.constraint.ConstraintLayout>
 </layout>

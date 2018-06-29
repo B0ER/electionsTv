@@ -55,7 +55,7 @@ public class SpeakerPresenter {
             public void onFailure(Call<List<ImageUrl>> call, Throwable t) {
               fragment.stopLoadScreen();
               fragment.serverError();
-              Log.d("Retrofit", "ProgressPresenter onFailure: " + t);
+              Log.d("Retrofit", "SpeakerPresenter onFailure: " + t);
             }
           });
     } else {

@@ -11,7 +11,7 @@ import com.twobro.tvelections.R;
 import com.twobro.tvelections.activity.MainActivity;
 import com.twobro.tvelections.mvp.WaitingPresenter;
 
-public class WaitingFragment extends BaseFragment {
+public class WaitingFragment extends Fragment {
   private static String TAG = "WaitingFragment";
   private WaitingPresenter presenter;
 
@@ -21,10 +21,6 @@ public class WaitingFragment extends BaseFragment {
 
   public static WaitingFragment createFragment() {
     WaitingFragment fragment = new WaitingFragment();
-    //        Bundle args = new Bundle();
-    //        args.putString(ARG_PARAM1, param1);
-    //        args.putString(ARG_PARAM2, param2);
-    //        fragment.setArguments(args);
     return fragment;
   }
 

@@ -10,15 +10,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.widget.FrameLayout;
 import com.twobro.tvelections.R;
 import com.twobro.tvelections.activity.MainActivity;
 import com.twobro.tvelections.controller.VotingProgressController;
-import com.twobro.tvelections.databinding.FragmentProgressBinding;
+import com.twobro.tvelections.databinding.FragmentStatsBinding;
 import com.twobro.tvelections.mvp.StatsPresenter;
 
-public class StatsFragment extends BaseFragment {
+public class StatsFragment extends Fragment {
   private static String TAG = "StatsFragment";
-  public FragmentProgressBinding binding;
+  public FragmentStatsBinding binding;
   private VotingProgressController vpController;
   private StatsPresenter presenter;
 
@@ -60,9 +61,22 @@ public class StatsFragment extends BaseFragment {
     }
   }
 
+  public void serverError() {
+    MainActivity activity = (MainActivity) getActivity();
+    activity.serverError();
+  }
+
   public void toTheWaitingFragment() {
     Log.d(TAG, "backToWaitFragment: ");
     MainActivity activity = (MainActivity) getActivity();
     activity.toTheWaitingFragment();
+  }
+
+  public void startLoadScreen() {
+    binding.loadConnect.setVisibility(FrameLayout.VISIBLE);
+  }
+
+  public void stopLoadScreen() {
+    binding.loadConnect.setVisibility(FrameLayout.INVISIBLE);
   }
 }

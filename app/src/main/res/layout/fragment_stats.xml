@@ -108,5 +108,23 @@
 
 
         </android.support.constraint.ConstraintLayout>
+        <FrameLayout
+            android:id="@+id/loadConnect"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clickable="true"
+            android:focusable="true"
+            android:visibility="invisible">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#734b4b4b"/>
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"/>
+        </FrameLayout>
     </FrameLayout>
 </layout>

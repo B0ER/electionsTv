@@ -7,9 +7,11 @@ import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
+import android.util.Log;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 import com.twobro.tvelections.databinding.MainActivityBinding;
+import com.twobro.tvelections.fragments.SpeakerFragment;
 import com.twobro.tvelections.fragments.StatsFragment;
 import com.twobro.tvelections.R;
 import com.twobro.tvelections.fragments.WaitingFragment;
@@ -40,30 +42,30 @@ public class MainActivity extends AppCompatActivity {
     }
   }
 
-
-  public void startLoadScreen() {
-    binding.loadConnect.setVisibility(FrameLayout.VISIBLE);
-  }
-
-  public void stopLoadScreen() {
-    binding.loadConnect.setVisibility(FrameLayout.INVISIBLE);
-  }
-
   public void serverError() {
     Toast.makeText(this, "Нет соединения сети!", Toast.LENGTH_SHORT).show();
   }
 
-  public void toTheWaitingFragment(){
+  public void toTheWaitingFragment() {
     fragmentManager
         .beginTransaction()
         .replace(R.id.center_fragment, waitingFragment)
         .commit();
   }
 
-  public void toStatsFragment(){
+  public void toStatsFragment() {
     fragmentManager
         .beginTransaction()
         .replace(R.id.center_fragment, statsFragment)
+        .commit();
+  }
+
+  public void toSpeakerFragment(int id) {
+    Log.d(TAG, "toSpeakersFragment: ");
+    SpeakerFragment fragment = SpeakerFragment.createFragment(id);
+    fragmentManager
+        .beginTransaction()
+        .replace(R.id.center_fragment, fragment)
         .commit();
   }
 }

@@ -3,7 +3,7 @@ package com.twobro.tvelections.models;
 import com.google.gson.annotations.SerializedName;
 
 public class ImageUrl {
-  @SerializedName("Url")
+  @SerializedName("url")
   private String url;
 
   public ImageUrl(String url) {
