@@ -13,4 +13,7 @@
 
     <string name="time_left">"Часу залишилось : %1$d сек."</string>
     <string name="time_lefted">Час вийшов.</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

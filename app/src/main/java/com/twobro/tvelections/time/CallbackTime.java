@@ -1,6 +1,5 @@
 package com.twobro.tvelections.time;
 
-
 public interface CallbackTime {
-    void updateTime(int time);
+  void updateTime(int time);
 }

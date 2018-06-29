@@ -4,44 +4,66 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.widget.TextView;
 
+import android.widget.FrameLayout;
+import android.widget.Toast;
+import com.twobro.tvelections.databinding.MainActivityBinding;
 import com.twobro.tvelections.fragments.StatsFragment;
 import com.twobro.tvelections.R;
 import com.twobro.tvelections.fragments.WaitingFragment;
 
 public class MainActivity extends AppCompatActivity {
-    private Toolbar mToolbar;
-    private FragmentManager mFragmentManager;
+  private static final String TAG = "MainActivity";
+  private Toolbar toolbar;
+  private MainActivityBinding binding;
 
-    private static final String TAG = "MainActivity";
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.main_activity);
+  private FragmentManager fragmentManager;
+  private final WaitingFragment waitingFragment = WaitingFragment.createFragment();
+  private final StatsFragment statsFragment = StatsFragment.createFragment();
 
-        mToolbar = findViewById(R.id.custom_toolbar);
-        setSupportActionBar(mToolbar);
+  @Override
+  protected void onCreate(@Nullable Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.main_activity);
 
-        mFragmentManager = getSupportFragmentManager();
-        Fragment mainFragment = mFragmentManager.findFragmentById(R.id.center_fragment);
-        if (mainFragment == null) {
-            mainFragment = StatsFragment.createFragment();
-            mFragmentManager.beginTransaction()
-                    .add(R.id.center_fragment, mainFragment)
-                    .commit();
-        }
+    toolbar = findViewById(R.id.custom_toolbar);
+    setSupportActionBar(toolbar);
+
+    fragmentManager = getSupportFragmentManager();
+    Fragment mainFragment = fragmentManager.findFragmentById(R.id.center_fragment);
+    if (mainFragment == null) {
+      fragmentManager.beginTransaction()
+          .add(R.id.center_fragment, waitingFragment)
+          .commit();
     }
+  }
 
-    public void replaceFragment(Fragment onFragment){
-        mFragmentManager.beginTransaction().replace(R.id.center_fragment, onFragment).commit();
-    }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-    }
+  public void startLoadScreen() {
+    binding.loadConnect.setVisibility(FrameLayout.VISIBLE);
+  }
+
+  public void stopLoadScreen() {
+    binding.loadConnect.setVisibility(FrameLayout.INVISIBLE);
+  }
+
+  public void serverError() {
+    Toast.makeText(this, "Нет соединения сети!", Toast.LENGTH_SHORT).show();
+  }
+
+  public void toTheWaitingFragment(){
+    fragmentManager
+        .beginTransaction()
+        .replace(R.id.center_fragment, waitingFragment)
+        .commit();
+  }
+
+  public void toStatsFragment(){
+    fragmentManager
+        .beginTransaction()
+        .replace(R.id.center_fragment, statsFragment)
+        .commit();
+  }
 }
