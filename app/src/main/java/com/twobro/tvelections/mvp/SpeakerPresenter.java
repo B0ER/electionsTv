@@ -25,16 +25,7 @@ public class SpeakerPresenter {
     socket = SocketSingleton.getInstance();
     this.idSpeaker = idSpeaker;
     urlListImage = new ArrayList<>();
-    init();
     getImageList();
-  }
-
-  private void init() {
-    socket.on("", args -> {
-
-    });
-
-    socket.connect();
   }
 
   private void getImageList() {

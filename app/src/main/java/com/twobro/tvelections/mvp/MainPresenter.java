@@ -15,31 +15,23 @@ public class MainPresenter {
 
   public MainPresenter(MainActivity activity) {
     this.activity = activity;
-
     socket = SocketSingleton.getInstance();
     retrofitApi = RetrofitConnector.getInstance();
-
     initSocket();
-
   }
 
   private void initSocket() {
-    socket.on("votingFollowers", (Object... args) -> {
+    socket.on("startVoting", (Object... args) -> {
       activity.toStatsFragment();
     });
 
-    socket.on("votingQuestions", (Object... args) -> {
-      activity.toStatsFragment();
-    });
-
-    socket.on("votingSpeakers", (Object... args) -> {
+    socket.on("votingSpeakersTv", (Object... args) -> {
       Speaker speaker = new Gson().fromJson(args[0].toString(), Speaker.class);
       activity.toSpeakerFragment(speaker.getId());
     });
 
-    socket.on("additionalSpeaker", (Object... args) -> {
-      int id = Integer.parseInt(args[0].toString());
-      activity.toSpeakerFragment(id);
+    socket.on("additionalSpeakerToTv", (Object... args) -> {
+      activity.toSpeakerFragment(-1);
     });
 
     socket.connect();

@@ -66,12 +66,6 @@ public class SpeakerFragment extends Fragment {
     activity.serverError();
   }
 
-  public void toStatsFragment() {
-    Log.d(TAG, "toStatsFragment: ");
-    MainActivity activity = (MainActivity) getActivity();
-    activity.toStatsFragment();
-  }
-
   public void startLoadScreen() {
     binding.loadConnect.setVisibility(FrameLayout.VISIBLE);
   }

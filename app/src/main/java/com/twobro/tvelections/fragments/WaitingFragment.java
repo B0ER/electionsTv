@@ -2,18 +2,13 @@ package com.twobro.tvelections.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import com.twobro.tvelections.R;
-import com.twobro.tvelections.activity.MainActivity;
-import com.twobro.tvelections.mvp.WaitingPresenter;
 
 public class WaitingFragment extends Fragment {
   private static String TAG = "WaitingFragment";
-  private WaitingPresenter presenter;
 
   public WaitingFragment() {
 
@@ -28,7 +23,6 @@ public class WaitingFragment extends Fragment {
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
       Bundle savedInstanceState) {
     View view = inflater.inflate(R.layout.fragment_waiting, container, false);
-    presenter = new WaitingPresenter(this);
     return view;
   }
 }

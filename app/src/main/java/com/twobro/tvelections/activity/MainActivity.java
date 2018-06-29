@@ -15,6 +15,7 @@ import com.twobro.tvelections.fragments.SpeakerFragment;
 import com.twobro.tvelections.fragments.StatsFragment;
 import com.twobro.tvelections.R;
 import com.twobro.tvelections.fragments.WaitingFragment;
+import com.twobro.tvelections.mvp.MainPresenter;
 
 public class MainActivity extends AppCompatActivity {
   private static final String TAG = "MainActivity";
@@ -24,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
   private FragmentManager fragmentManager;
   private final WaitingFragment waitingFragment = WaitingFragment.createFragment();
   private final StatsFragment statsFragment = StatsFragment.createFragment();
+
+  private MainPresenter presenter;
 
   @Override
   protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -40,6 +43,8 @@ public class MainActivity extends AppCompatActivity {
           .add(R.id.center_fragment, waitingFragment)
           .commit();
     }
+
+    presenter = new MainPresenter(this);
   }
 
   public void serverError() {
