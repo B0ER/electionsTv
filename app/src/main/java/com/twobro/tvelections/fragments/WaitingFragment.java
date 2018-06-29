@@ -35,10 +35,4 @@ public class WaitingFragment extends BaseFragment {
     presenter = new WaitingPresenter(this);
     return view;
   }
-
-  public void toStatsFragment() {
-    Log.d(TAG, "backToWaitFragment: ");
-    MainActivity activity = (MainActivity) getActivity();
-    activity.toStatsFragment();
-  }
 }

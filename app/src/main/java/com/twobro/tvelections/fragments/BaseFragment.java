@@ -35,4 +35,9 @@ public abstract class BaseFragment extends Fragment {
     activity.serverError();
   }
 
+  public void toStatsFragment() {
+    Log.d(TAG, "toStatsFragment: ");
+    MainActivity activity = (MainActivity) getActivity();
+    activity.toStatsFragment();
+  }
 }
