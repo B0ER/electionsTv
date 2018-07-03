@@ -1,5 +1,6 @@
 package com.twobro.tvelections.fragments;
 
+import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -55,21 +56,22 @@ public class StatsFragment extends Fragment {
   }
 
   public void setTimeSec(int timeSec) {
-    binding.timeEnd.setText(getString(R.string.time_left, timeSec));
-    if (timeSec == 0) {
-      binding.timeEnd.setText(getString(R.string.time_lefted));
-    }
+    try {
+      binding.timeEnd.setText(getString(R.string.time_left, timeSec));
+      if (timeSec == 0) {
+        binding.timeEnd.setText(getString(R.string.time_lefted));
+        presenter.waitAndGoToWaitingFragment();
+      }
+    } catch (IllegalStateException ex) {return;}
   }
 
   public void serverError() {
-    MainActivity activity = (MainActivity) getActivity();
-    activity.serverError();
+    ((MainActivity) getActivity()).serverError();
   }
 
   public void toTheWaitingFragment() {
     Log.d(TAG, "backToWaitFragment: ");
-    MainActivity activity = (MainActivity) getActivity();
-    activity.toTheWaitingFragment();
+    ((MainActivity) getActivity()).toTheWaitingFragment();
   }
 
   public void startLoadScreen() {

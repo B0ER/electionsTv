@@ -70,16 +70,21 @@ public class StatsPresenter {
     });
 
     socket.on("eventCloseVoting", (Object... args) -> {
-      new Thread(() -> {
-        try {
-          TimeUnit.SECONDS.sleep(5);
-          hFinishVoting.sendEmptyMessage(0);
-        } catch (InterruptedException e) {
-          e.printStackTrace();
-        }
-      }).start();
+      //fragment.toTheWaitingFragment();
+      //waitingThread.start();
     });
     socket.connect();
+  }
+
+  public void waitAndGoToWaitingFragment(){
+    new Thread(() -> {
+      try {
+        TimeUnit.SECONDS.sleep(5);
+        hFinishVoting.sendEmptyMessage(0);
+      } catch (InterruptedException e) {
+        e.printStackTrace();
+      }
+    }).start();
   }
 
   public void startTimer(int time) {

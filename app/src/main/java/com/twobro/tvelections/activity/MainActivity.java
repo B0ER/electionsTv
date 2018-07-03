@@ -23,8 +23,8 @@ public class MainActivity extends AppCompatActivity {
   private MainActivityBinding binding;
 
   private FragmentManager fragmentManager;
-  private final WaitingFragment waitingFragment = WaitingFragment.createFragment();
-  private final StatsFragment statsFragment = StatsFragment.createFragment();
+  private WaitingFragment waitingFragment;
+  private StatsFragment statsFragment;
 
   private MainPresenter presenter;
 
@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
     fragmentManager = getSupportFragmentManager();
     Fragment mainFragment = fragmentManager.findFragmentById(R.id.center_fragment);
     if (mainFragment == null) {
+      waitingFragment = WaitingFragment.createFragment();
       fragmentManager.beginTransaction()
           .add(R.id.center_fragment, waitingFragment)
           .commit();
@@ -52,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
   }
 
   public void toTheWaitingFragment() {
+    waitingFragment = WaitingFragment.createFragment();
     fragmentManager
         .beginTransaction()
         .replace(R.id.center_fragment, waitingFragment)
@@ -59,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
   }
 
   public void toStatsFragment() {
+    statsFragment = StatsFragment.createFragment();
     fragmentManager
         .beginTransaction()
         .replace(R.id.center_fragment, statsFragment)

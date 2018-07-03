@@ -41,7 +41,7 @@ public class TimerCallback {
               e.printStackTrace();
             }
           }
-          publishProgress();
+          //publishProgress();
           return null;
         }
       }.execute();
