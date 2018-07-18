@@ -6,14 +6,14 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-
 import android.util.Log;
-import android.widget.FrameLayout;
+import android.view.KeyEvent;
 import android.widget.Toast;
+
+import com.twobro.tvelections.R;
 import com.twobro.tvelections.databinding.MainActivityBinding;
 import com.twobro.tvelections.fragments.SpeakerFragment;
 import com.twobro.tvelections.fragments.StatsFragment;
-import com.twobro.tvelections.R;
 import com.twobro.tvelections.fragments.WaitingFragment;
 import com.twobro.tvelections.mvp.MainPresenter;
 
@@ -46,6 +46,37 @@ public class MainActivity extends AppCompatActivity {
     }
 
     presenter = new MainPresenter(this);
+  }
+
+  @Override
+  public boolean onKeyDown(int keyCode, KeyEvent event) {
+    Fragment fragment = fragmentManager.findFragmentById(R.id.center_fragment);
+    if (fragment instanceof SpeakerFragment) {
+      SpeakerFragment fragm = (SpeakerFragment) fragment;
+
+      switch (keyCode) {
+        case KeyEvent.KEYCODE_DPAD_LEFT:
+          Log.d(TAG, "onKeyDown: LEFT");
+          fragm.previousImage();
+          return true;
+
+        case KeyEvent.KEYCODE_DPAD_RIGHT:
+          Log.d(TAG, "onKeyDown: Right");
+          fragm.nextImage();
+          return true;
+      }
+    }
+
+    if (keyCode == KeyEvent.KEYCODE_BACK){
+      android.os.Process.killProcess(android.os.Process.myPid());
+      return true;
+    }
+    return false;
+  }
+
+  @Override
+  public boolean onKeyUp(int keyCode, KeyEvent event) {
+    return super.onKeyUp(keyCode, event);
   }
 
   public void serverError() {

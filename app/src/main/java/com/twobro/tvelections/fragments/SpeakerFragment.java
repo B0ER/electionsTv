@@ -31,26 +31,34 @@ public class SpeakerFragment extends Fragment {
     }
   }
 
-  @Nullable @Override
+  @Nullable
+  @Override
   public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
       @Nullable Bundle savedInstanceState) {
     binding = DataBindingUtil.inflate(inflater, R.layout.fragment_speakers, container, false);
     return binding.getRoot();
   }
 
-  @Override public void onStart() {
+  @Override
+  public void onStart() {
     super.onStart();
     presenter = new SpeakerPresenter(this, idSpeaker);
   }
 
   public void setImage(String url) {
-    Log.d(TAG, "setImage: Image is set!!!");
     Picasso.get().load(url).into(binding.currentImage);
   }
 
   public void setImage(@DrawableRes int image) {
-    Log.d(TAG, "setImage: Image is set!!!");
-    Picasso.get().load(image).fit().into(binding.currentImage);
+    Picasso.get().load(image).into(binding.currentImage);
+  }
+
+  public void nextImage(){
+    presenter.nextImage();
+  }
+
+  public void previousImage(){
+    presenter.previousImage();
   }
 
   public static SpeakerFragment createFragment(int idSpeaker) {
@@ -59,6 +67,10 @@ public class SpeakerFragment extends Fragment {
     args.putInt(SPEAKER_KEY, idSpeaker);
     fragment.setArguments(args);
     return fragment;
+  }
+
+  public void setCountImage(int index, int count){
+    binding.numberImage.setText(String.format("%d/%d", index+1, count));
   }
 
   public void serverError() {

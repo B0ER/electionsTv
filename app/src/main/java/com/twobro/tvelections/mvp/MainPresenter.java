@@ -26,8 +26,8 @@ public class MainPresenter {
     });
 
     socket.on("votingSpeakersTv", (Object... args) -> {
-      Speaker speaker = new Gson().fromJson(args[0].toString(), Speaker.class);
-      activity.toSpeakerFragment(speaker.getId());
+      Integer speaker = Integer.parseInt(args[0].toString());
+      activity.toSpeakerFragment(speaker);
     });
 
     socket.on("additionalSpeakerToTv", (Object... args) -> {
