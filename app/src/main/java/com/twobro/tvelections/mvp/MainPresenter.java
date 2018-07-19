@@ -1,5 +1,7 @@
 package com.twobro.tvelections.mvp;
 
+import android.util.Log;
+
 import com.google.gson.Gson;
 import com.twobro.tvelections.activity.MainActivity;
 import com.twobro.tvelections.models.Speaker;
@@ -9,6 +11,7 @@ import com.twobro.tvelections.network.socket.SocketSingleton;
 import io.socket.client.Socket;
 
 public class MainPresenter {
+  public static final String TAG = "MainPresenter";
   private MainActivity activity;
   private Socket socket;
   private ServerApi retrofitApi;
@@ -26,12 +29,17 @@ public class MainPresenter {
     });
 
     socket.on("votingSpeakersTv", (Object... args) -> {
-      Integer speaker = Integer.parseInt(args[0].toString());
+      Log.d(TAG, "initSocket: args="+args[0].toString());
+      Speaker speaker = new Gson().fromJson(args[0].toString(), Speaker.class);
       activity.toSpeakerFragment(speaker);
     });
 
     socket.on("additionalSpeakerToTv", (Object... args) -> {
-      activity.toSpeakerFragment(-1);
+      activity.toSpeakerFragment();
+    });
+
+    socket.on("startSession", (Object... args) -> {
+
     });
 
     socket.connect();

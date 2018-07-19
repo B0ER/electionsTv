@@ -20,6 +20,16 @@
       android:id="@+id/custom_toolbar"
       layout="@layout/custom_toolbar"/>
 
+  <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Очікування"
+    android:layout_gravity="center"
+    android:layout_marginTop="100dp"
+    android:textSize="40sp"
+    android:textStyle="bold"
+    android:textColor="@color/colorBlue"/>
+
   <ProgressBar
       android:layout_width="100dp"
       android:layout_height="100dp"

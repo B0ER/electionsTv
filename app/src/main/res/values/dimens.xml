@@ -3,7 +3,7 @@
     <!--main fragment-->
 
     <!--custom toolbar-->
-    <dimen name="text_toolbar">40sp</dimen>
+    <dimen name="text_toolbar">50sp</dimen>
 
     <!--fragment stats-->
     <dimen name="progress_timer">30sp</dimen>

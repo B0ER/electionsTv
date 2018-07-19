@@ -13,8 +13,10 @@ import android.widget.Toast;
 import com.twobro.tvelections.R;
 import com.twobro.tvelections.databinding.MainActivityBinding;
 import com.twobro.tvelections.fragments.SpeakerFragment;
+import com.twobro.tvelections.fragments.SessionFragment;
 import com.twobro.tvelections.fragments.StatsFragment;
 import com.twobro.tvelections.fragments.WaitingFragment;
+import com.twobro.tvelections.models.Speaker;
 import com.twobro.tvelections.mvp.MainPresenter;
 
 public class MainActivity extends AppCompatActivity {
@@ -99,9 +101,27 @@ public class MainActivity extends AppCompatActivity {
         .commit();
   }
 
-  public void toSpeakerFragment(int id) {
+  public void toSpeakerFragment(Speaker speaker) {
     Log.d(TAG, "toSpeakersFragment: ");
-    SpeakerFragment fragment = SpeakerFragment.createFragment(id);
+    SpeakerFragment fragment = SpeakerFragment.createFragment(speaker);
+    fragmentManager
+        .beginTransaction()
+        .replace(R.id.center_fragment, fragment)
+        .commit();
+  }
+
+  public void toSpeakerFragment() {
+    Log.d(TAG, "toSpeakersFragment: ");
+    SpeakerFragment fragment = SpeakerFragment.createFragment();
+    fragmentManager
+        .beginTransaction()
+        .replace(R.id.center_fragment, fragment)
+        .commit();
+  }
+
+  public void toSessionFragment() {
+    Log.d(TAG, "toSessionFragment: ");
+    SessionFragment fragment = SessionFragment.createFragment();
     fragmentManager
         .beginTransaction()
         .replace(R.id.center_fragment, fragment)

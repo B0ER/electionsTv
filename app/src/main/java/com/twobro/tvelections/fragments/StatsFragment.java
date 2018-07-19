@@ -43,6 +43,11 @@ public class StatsFragment extends Fragment {
   }
 
   @Override
+  public void onSaveInstanceState(@NonNull Bundle outState) {
+
+  }
+
+  @Override
   public void onResume() {
     super.onResume();
   }
