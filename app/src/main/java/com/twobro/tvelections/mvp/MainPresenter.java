@@ -39,7 +39,7 @@ public class MainPresenter {
     });
 
     socket.on("startSession", (Object... args) -> {
-
+      activity.toSessionFragment();
     });
 
     socket.connect();
