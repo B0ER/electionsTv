@@ -48,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     presenter = new MainPresenter(this);
+    toSessionFragment();
   }
 
   @Override

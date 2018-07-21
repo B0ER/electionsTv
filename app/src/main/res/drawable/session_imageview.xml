@@ -1,22 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
 
-  <item android:drawable="@drawable/flag_of_ukraine"/>
+  <item
+    android:drawable="@drawable/flag_of_ukraine"
+    android:top="10dp"
+    android:bottom="10dp"
+    android:left="10dp"
+    android:right="10dp"/>
 
   <item>
     <shape xmlns:android="http://schemas.android.com/apk/res/android"
-      android:innerRadius="5dp"
+      android:innerRadius="0dp"
       android:shape="rectangle"
       android:thicknessRatio="1.9"
       android:useLevel="false">
 
-      <corners android:radius="5dp"/>
+      <corners android:radius="5dp" />
 
       <solid android:color="@android:color/transparent" />
 
       <stroke
+        android:width="10dp"
         android:color="@android:color/white" />
-
     </shape>
   </item>
 
