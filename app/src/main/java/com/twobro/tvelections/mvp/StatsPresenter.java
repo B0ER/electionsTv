@@ -89,9 +89,7 @@ public class StatsPresenter {
 
   public void startTimer(int time) {
     timer = new TimerCallback(time);
-    timer.setCallbackTime(times -> {
-      fragment.setTimeSec(times);
-    });
+    timer.setCallbackTime(times -> fragment.setTimeSec(times));
     timer.startTimer();
   }
 
@@ -118,5 +116,9 @@ public class StatsPresenter {
     } else {
       fragment.serverError();
     }
+  }
+
+  public VotingProgress getCurrentProgress() {
+    return currentProgress;
   }
 }

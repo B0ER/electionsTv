@@ -4,14 +4,32 @@
     android:layout_height="wrap_content"
     android:background="@color/colorTransparentBlue">
 
-        <TextView
-            android:id="@+id/titleBar"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/titleBarDefault"
-            android:textSize="@dimen/text_toolbar"
-            android:padding="10dp"
-            android:textAlignment="center"
-            android:textColor="@color/colorAccent"/>
+            android:orientation="horizontal"
+            android:layout_marginEnd="18dp"
+            android:gravity="center">
+
+                <ImageView
+                    android:layout_width="54dp"
+                    android:layout_height="54dp"
+                    android:src="@drawable/ic_blazon_24dp" />
+
+                <TextView
+                    android:id="@+id/titleBar"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/titleBarDefault"
+                    android:textSize="@dimen/text_toolbar"
+                    android:padding="10dp"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorWhite"/>
+                <ImageView
+                    android:layout_width="54dp"
+                    android:layout_height="54dp"
+                    android:src="@drawable/ic_blazon_24dp" />
+        </LinearLayout>
 
 </android.support.v7.widget.Toolbar>

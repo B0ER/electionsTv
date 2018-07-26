@@ -28,6 +28,7 @@
     android:layout_marginTop="100dp"
     android:textSize="40sp"
     android:textStyle="bold"
+      android:visibility="gone"
     android:textColor="@color/colorBlue"/>
 
   <ProgressBar
@@ -35,10 +36,5 @@
       android:layout_height="100dp"
       android:layout_gravity="center"/>
 
-  <ImageView
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:layout_gravity="center_horizontal|bottom"
-      android:scaleType="centerInside"
-      android:src="@drawable/bg_details"/>
+
 </FrameLayout>

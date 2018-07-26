@@ -3,10 +3,10 @@
 
   <item
     android:drawable="@drawable/flag_of_ukraine"
-    android:top="10dp"
-    android:bottom="10dp"
+
     android:left="10dp"
     android:right="10dp"/>
+
 
   <item>
     <shape xmlns:android="http://schemas.android.com/apk/res/android"
@@ -17,7 +17,7 @@
 
       <corners android:radius="5dp" />
 
-      <solid android:color="@android:color/transparent" />
+      <solid android:color="@color/colorTransparent" />
 
       <stroke
         android:width="10dp"

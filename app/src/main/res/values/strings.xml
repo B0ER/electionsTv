@@ -12,7 +12,9 @@
   <string name="titleBarWait">Очікуйте</string>
 
   <string name="time_left">"Часу залишилось : %1$d сек."</string>
-  <string name="time_lefted">Час вийшов.</string>
+  <string name="time_lefted">Час вийшов</string>
+  <string name="decision_is_made">"Рішення прийнято"</string>
+  <string name="decision_is_not_made">"Рішення не прийнято"</string>
 
   <!-- TODO: Remove or change this placeholder text -->
   <string name="hello_blank_fragment">Hello blank fragment</string>
